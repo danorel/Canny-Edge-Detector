@@ -80,3 +80,4 @@ double GaussianBlurManager::KernelFunction(double x, double y, double sigma) {
 GaussianBlurManager::~GaussianBlurManager() {
 
 }
+

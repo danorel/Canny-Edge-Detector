@@ -8,17 +8,28 @@
 #include <iomanip>
 #include <cmath>
 
+#include "gaussian_filter.h"
+#include "sobel_operator.h"
+
 using namespace cv;
 #ifndef CANNY_EDGE_DETECTOR_HANDS_METHODS_H
 #define CANNY_EDGE_DETECTOR_HANDS_METHODS_H
 class CannyEdgeDetector{
 public:
-    CannyEdgeDetector(const Mat&);
+    CannyEdgeDetector(const Mat &Image);
     Mat start();
-    void setupGaussianKernel(short);
+    void setupGaussianKernel(int kernel_size, double sigma);
     ~CannyEdgeDetector();
+
 private:
     Mat Image;
-    short kernel_size;
+
+private:
+    GaussianBlurManager Gaussian = GaussianBlurManager(Mat());
+    int gaussian_kernel_size     = 0;
+    double gaussian_sigma        = 0.;
+
+private:
+    SobelOperator Sobel = SobelOperator(Mat());
 };
 #endif //CANNY_EDGE_DETECTOR_HANDS_METHODS_H

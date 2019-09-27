@@ -14,6 +14,9 @@ using namespace cv;
 class GaussianBlurManager{
 public:
     GaussianBlurManager(const Mat&);
+
+    GaussianBlurManager();
+
     Mat process();
     void setupKernel(int, double);
     ~GaussianBlurManager();
