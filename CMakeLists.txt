@@ -8,7 +8,9 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 add_executable(
         Canny-Edge-Detector main.cpp
-        hands_methods.cpp
+        canny_edge_detection.cpp
+        gaussian_filter.cpp
+        sobel_operator.cpp
 )
 
 # linking
