@@ -11,5 +11,14 @@
 using namespace cv;
 #ifndef CANNY_EDGE_DETECTOR_HANDS_METHODS_H
 #define CANNY_EDGE_DETECTOR_HANDS_METHODS_H
-
+class CannyEdgeDetector{
+public:
+    CannyEdgeDetector(const Mat&);
+    Mat start();
+    void setupGaussianKernel(short);
+    ~CannyEdgeDetector();
+private:
+    Mat Image;
+    short kernel_size;
+};
 #endif //CANNY_EDGE_DETECTOR_HANDS_METHODS_H

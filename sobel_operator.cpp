@@ -3,7 +3,11 @@
 //
 #include "sobel_operator.h"
 
-Mat SobelOperator(const Mat& Image){
+SobelOperator::SobelOperator(const Mat& Image){
+    this->Image = Image;
+}
+
+Mat SobelOperator::process(){
     // Setting up the kernel size length
     const int kernel_size = 3;
     // Initializing the processed image
@@ -39,7 +43,7 @@ Mat SobelOperator(const Mat& Image){
     return ProcessedImage;
 }
 
-double** Gx(){
+double** SobelOperator::Gx(){
     const short size = 3;
     // Initializing the Gx
     double **Gx = new double*[size];
@@ -67,7 +71,7 @@ double** Gx(){
     return Gx;
 }
 
-double** Gy(){
+double** SobelOperator::Gy(){
     const short size = 3;
     // Initializing the Gy
     double **Gy = new double*[size];
@@ -93,4 +97,8 @@ double** Gy(){
         std::cout << std::endl;
     }
     return Gy;
+}
+
+SobelOperator::~SobelOperator() {
+
 }

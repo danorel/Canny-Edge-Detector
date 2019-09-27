@@ -11,7 +11,19 @@
 using namespace cv;
 #ifndef CANNY_EDGE_DETECTOR_GAUSSIAN_FILTER_H
 #define CANNY_EDGE_DETECTOR_GAUSSIAN_FILTER_H
-Mat GaussianBlur(const Mat& Image, int kernel_size, double sigma);
-double** GaussianKernel(int kernel_size, double sigma);
-double KernelFunction(double x, double y, double sigma);
+class GaussianBlurManager{
+public:
+    GaussianBlurManager(const Mat&);
+    Mat process();
+    void setupKernel(int, double);
+    ~GaussianBlurManager();
+private:
+    double** GaussianKernel(int, double);
+    double KernelFunction(double, double, double);
+
+private:
+    Mat Image;
+    int kernel_size;
+    double sigma;
+};
 #endif //CANNY_EDGE_DETECTOR_GAUSSIAN_FILTER_H

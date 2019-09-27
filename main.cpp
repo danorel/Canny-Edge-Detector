@@ -9,6 +9,8 @@ int main(){
     std::string ImageLabel = "Original Image";
     Mat Image = imread(pathToImage + image, IMREAD_GRAYSCALE);
 
+    CannyEdgeDetector detector = CannyEdgeDetector(Image);
+
     imshow(ImageLabel, Image);
     waitKey();
     return 0;

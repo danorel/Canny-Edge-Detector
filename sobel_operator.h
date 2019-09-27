@@ -11,7 +11,16 @@
 using namespace cv;
 #ifndef CANNY_EDGE_DETECTOR_SOBOL_OPERATOR_H
 #define CANNY_EDGE_DETECTOR_SOBOL_OPERATOR_H
-Mat SobelOperator(const Mat&);
-double** Gy();
-double** Gx();
+class SobelOperator{
+public:
+    SobelOperator(const Mat&);
+    Mat process();
+    ~SobelOperator();
+private:
+    double **Gx();
+    double **Gy();
+
+private:
+    Mat Image;
+};
 #endif //CANNY_EDGE_DETECTOR_SOBOL_OPERATOR_H
