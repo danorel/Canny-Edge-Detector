@@ -19,9 +19,11 @@ public:
     CannyEdgeDetector(const Mat&);
     Mat start();
     void setupGaussianKernel(int, double);
+    void setupThresholdParameters(int, int);
     ~CannyEdgeDetector();
 private:
     Mat NonMaximaSuppresion(const Mat &, const Mat &);
+    Mat ThresholdDropper(const Mat &, int, int);
 
 private:
     Mat Image;
@@ -33,5 +35,9 @@ private:
 
 private:
     SobelOperator Sobel = SobelOperator(Mat());
+
+private:
+    int threshold_minimum = 0,
+        threshold_maximum = 0;
 };
 #endif //CANNY_EDGE_DETECTOR_HANDS_METHODS_H
