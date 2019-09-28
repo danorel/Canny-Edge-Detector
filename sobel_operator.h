@@ -15,6 +15,7 @@ class SobelOperator{
 public:
     SobelOperator(const Mat&);
     Mat process();
+    Mat GetAngleMap();
     ~SobelOperator();
 private:
     double **Gx();
@@ -22,5 +23,6 @@ private:
 
 private:
     Mat Image;
+    Mat AngleMap;
 };
 #endif //CANNY_EDGE_DETECTOR_SOBOL_OPERATOR_H

@@ -20,6 +20,12 @@ Mat SobelOperator::process(){
     // Initializing the Gx and Gy kernels
     double **Gx_Kernel = Gx();
     double **Gy_Kernel = Gy();
+    // Initializing the AngleMap
+    this->AngleMap = Mat(
+            rows - 2 * verticalBound,
+            columns - 2 * horizontalBound,
+            CV_32FC1
+     );
     for(int row = 0 + verticalBound; row < rows - verticalBound; row++){
         for(int column = 0 + horizontalBound; column < columns - horizontalBound; column++){
             float total = 0., x_total = 0., y_total = 0.;
@@ -38,9 +44,18 @@ Mat SobelOperator::process(){
                 ProcessedImage.at<uchar>(row, column) = 0;
             else
                 ProcessedImage.at<uchar>(row, column) = total;
+            // Calculating the angle
+            if(x_total == 0)
+                this->AngleMap.at<float>(row - verticalBound, column - horizontalBound) = 90;
+            else
+                this->AngleMap.at<float>(row - verticalBound, column - horizontalBound) = atan(y_total / x_total);
         }
     }
     return ProcessedImage;
+}
+
+Mat SobelOperator::GetAngleMap() {
+    return this->AngleMap;
 }
 
 double** SobelOperator::Gx(){

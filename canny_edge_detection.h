@@ -16,10 +16,12 @@ using namespace cv;
 #define CANNY_EDGE_DETECTOR_HANDS_METHODS_H
 class CannyEdgeDetector{
 public:
-    CannyEdgeDetector(const Mat &Image);
+    CannyEdgeDetector(const Mat&);
     Mat start();
-    void setupGaussianKernel(int kernel_size, double sigma);
+    void setupGaussianKernel(int, double);
     ~CannyEdgeDetector();
+private:
+    Mat NonMaximaSuppresion(const Mat &, const Mat &);
 
 private:
     Mat Image;
